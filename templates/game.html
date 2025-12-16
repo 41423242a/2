@@ -1,1 +1,19 @@
+from browser import document, timer, window, ajax
+import random
+import time
 
+# --- 關卡設定 ---
+LEVELS = [
+    {"time": 30, "size": 50, "interval": 800},
+    {"time": 25, "size": 45, "interval": 650},
+    {"time": 20, "size": 40, "interval": 500},
+    {"time": 15, "size": 35, "interval": 400},
+    {"time": 12, "size": 30, "interval": 300},
+]
+
+current_level = 0
+score = 0
+game_active = False
+
+
+# --- 遊戲區 ---
