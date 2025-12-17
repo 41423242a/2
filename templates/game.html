@@ -39,3 +39,53 @@ for box in (score_display, timer_display, level_display):
     box.style.fontWeight = "bold"
     box.style.backgroundColor = "rgba(255,255,255,0.7)"
     box.style.padding = "5px"
+
+score_display.style.top = "10px"
+score_display.style.left = "10px"
+
+level_display.style.top = "10px"
+level_display.style.left = "140px"
+
+timer_display.style.top = "10px"
+timer_display.style.right = "10px"
+
+game_area <= score_display
+game_area <= level_display
+game_area <= timer_display
+
+
+# --- 目標 ---
+target.style.borderRadius = "50%"
+target.style.position = "absolute"
+target.style.cursor = "pointer"
+target.style.transition = "top 0.3s, left 0.3s"
+game_area <= target
+
+
+# --- 訊息畫面 ---
+game_msg.style.position = "absolute"
+game_msg.style.top = "50%"
+game_msg.style.left = "50%"
+game_msg.style.transform = "translate(-50%, -50%)"
+game_msg.style.backgroundColor = "rgba(0,0,0,0.85)"
+game_msg.style.color = "white"
+game_msg.style.padding = "30px"
+game_msg.style.borderRadius = "10px"
+game_msg.style.fontSize = "1.8em"
+game_msg.style.display = "none"
+game_msg.style.textAlign = "center"
+game_area <= game_msg
+
+
+# --- 遊戲邏輯 ---
+def move_target():
+    if not game_active:
+        return
+
+    size = LEVELS[current_level]["size"]
+    max_x = game_area.clientWidth - size
+    max_y = game_area.clientHeight - size
+
+    x = random.randint(0, max(0, max_x))
+    y = random.randint(40, max(40, max_y))
+    
