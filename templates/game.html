@@ -17,3 +17,25 @@ game_active = False
 
 
 # --- 遊戲區 ---
+game_area = document["brython_div1"]
+submit_url = game_area.attrs.get("data-submit-url", "/submit_score")
+
+game_area.style.border = "3px solid #333"
+game_area.style.backgroundColor = "#e0e0ff"
+game_area.style.position = "relative"
+game_area.style.overflow = "hidden"
+
+
+# --- UI ---
+score_display = document.createElement("div")
+timer_display = document.createElement("div")
+level_display = document.createElement("div")
+target = document.createElement("div")
+game_msg = document.createElement("div")
+
+for box in (score_display, timer_display, level_display):
+    box.style.position = "absolute"
+    box.style.fontSize = "1.1em"
+    box.style.fontWeight = "bold"
+    box.style.backgroundColor = "rgba(255,255,255,0.7)"
+    box.style.padding = "5px"
